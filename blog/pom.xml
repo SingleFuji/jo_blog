@@ -1,9 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>jo-project</groupId>
-  <artifactId>blog</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jo-project</groupId>
+	<artifactId>blog</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<spring.version>4.2.5.RELEASE</spring.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -11,59 +16,144 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>springmodules</groupId>
-			<artifactId>springmodules-osworkflow</artifactId>
-			<version>0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>1.2.1</version>
-			<type>jar</type>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.2.5.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>3.2.5.RELEASE</version>
+			<artifactId>spring-beans</artifactId>
+			<version>4.2.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.5.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.5.RELEASE</version>
+			<version>4.2.5.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.2.5.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.2.5.RELEASE</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.18</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.28</version>
+			<version>5.1.38</version>
 		</dependency>
 
-
-		<!-- redis -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>2.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>1.6.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.spullara.redis</groupId>
-			<artifactId>protocol</artifactId>
-			<version>0.7</version>
-		</dependency>
 	</dependencies>
+
+	<build>
+		<resources>
+			<!-- 设置资源 -->
+			<!-- <resource> -->
+			<!-- <directory>src/main/resources</directory> -->
+			<!-- <targetPath>${project.build.directory}/rescources</targetPath> -->
+			<!-- <excludes> -->
+			<!-- <exclude>**/*.txt</exclude> -->
+			<!-- </excludes> -->
+			<!-- </resource> -->
+			<!-- <resource> -->
+			<!-- <directory>src/main/java</directory> -->
+			<!-- </resource> -->
+		</resources>
+
+		<plugins>
+			<plugin>
+				<!-- 编译 指定jdk -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<!-- 将依赖包打入指定文件夹 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<!-- 过滤测试用例 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<!-- 打包源码 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+						<configuration>
+							<finalName>blog-demo-src</finalName>
+							<excludes>
+								<exclude>*</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
