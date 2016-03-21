@@ -1,11 +1,19 @@
 package com.jo.po;
+
+import java.io.Serializable;
+
 /**
  * 用户
  * 
  * @author zhouhang
  *
  */
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8458038714856525842L;
 
 	private String id;
 	

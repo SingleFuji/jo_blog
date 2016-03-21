@@ -20,7 +20,7 @@
 
 
 	<context:property-placeholder location="classpath:conf/redis.properties"
-		ignore-unresolvable="false" />
+		ignore-unresolvable="true" />
 
 
 	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
