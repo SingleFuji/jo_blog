@@ -7,4 +7,7 @@ package com.jo.po;
  */
 public class User {
 
+	private String id;
+	
+	private String name;
 }
