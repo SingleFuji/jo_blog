@@ -1,4 +1,4 @@
-package com.jo.cache.redis.impl;
+package com.jo.common.cache.redis.impl;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.jo.cache.redis.RedisStringService;
+import com.jo.common.cache.redis.RedisStringService;
 
 @Service("redisSimpleStringSerivice")
 public class RedisSimpleStringSerivice implements RedisStringService {

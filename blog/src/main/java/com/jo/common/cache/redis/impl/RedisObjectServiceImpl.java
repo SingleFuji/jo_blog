@@ -1,4 +1,4 @@
-package com.jo.cache.redis.impl;
+package com.jo.common.cache.redis.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.jo.cache.redis.CacheKey;
-import com.jo.cache.redis.RedisObjectService;
+import com.jo.common.cache.redis.CacheKey;
+import com.jo.common.cache.redis.RedisObjectService;
 
 @Service("redisObjectService")
 public class RedisObjectServiceImpl implements RedisObjectService

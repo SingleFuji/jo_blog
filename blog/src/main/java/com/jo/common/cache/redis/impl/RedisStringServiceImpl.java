@@ -1,4 +1,4 @@
-package com.jo.cache.redis.impl;
+package com.jo.common.cache.redis.impl;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.jo.cache.redis.CacheKey;
-import com.jo.cache.redis.RedisStringService;
+import com.jo.common.cache.redis.CacheKey;
+import com.jo.common.cache.redis.RedisStringService;
 
 /**
  * redis处理类

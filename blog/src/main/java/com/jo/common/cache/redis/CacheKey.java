@@ -1,4 +1,4 @@
-package com.jo.cache.redis;
+package com.jo.common.cache.redis;
 
 /**
  * 缓存相关键值

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+	<Appenders>
+		<!-- Console -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS}  [%t] %-5p %-20c - %m%n"/>
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		<!-- setting -->
+		<logger name="com.jo" level="INFO" additivity="true" />
+		
+		
+		<logger name="com.apache.ibatis" level="ERROR" additivity="true" />
+		<logger name="org.springframework" level="ERROR" additivity="true" />
+		<logger name="com.google" level="ERROR" additivity="true" />
+		<logger name="org.apache" level="ERROR" additivity="true" />
+		<logger name="org.mortbay" level="ERROR" additivity="true" />
+		<logger name="com.xgd.unifypay.framework.server.context" level="ERROR"  additivity="true" />
+		<logger name="com.xgd.unifypay" level="ERROR" additivity="true" />
+		<logger name="org.quartz" level="ERROR" additivity="true" />
+		<logger name="com.mchange" level="ERROR" additivity="true" />
+		<!-- sql DEBUG -->
+		<logger name="org.mybatis" level="INFO" additivity="true" />
+		<logger name="com.ibatis" level="INFO" additivity="true" />
+		<logger name="java.sql" level="INFO" additivity="true" />
+		
+		<logger name="com.xinguodu.openplatform.common" level="INFO" additivity="true" />
+		<logger name="com.xinguodu.openplatform.dal" level="INFO" additivity="true" />
+		
+		<Root level="ERROR">
+			<!-- <AppenderRef ref="Async" /> -->
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -8,7 +8,7 @@ import com.jo.dao.UserDao;
 import com.jo.po.User;
 import com.jo.util.JoConstants;
 
-public class Launch {
+public class TempLaunch {
 
 	public static void main(String[] args) {
 		String classpath = Thread.currentThread().getContextClassLoader().getResource("").toString();

@@ -7,7 +7,7 @@
 		class="org.springframework.context.support.ClassPathXmlApplicationContext">
 		<constructor-arg>
 			<list>
-				<value>conf/redisContext.xml</value>
+<!-- 				<value>conf/redisContext.xml</value> -->
 <!-- 				<value>conf/mybatisContext.xml</value> -->
 			</list>
 		</constructor-arg>
