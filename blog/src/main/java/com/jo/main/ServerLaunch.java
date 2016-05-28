@@ -2,6 +2,7 @@ package com.jo.main;
 
 import java.util.ServiceLoader;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +12,11 @@ public class ServerLaunch {
 
 	private static final Logger logger = LogManager.getLogger(ServerLaunch.class);
 	
+	private static volatile boolean running = true;
+	
 	public static void main(String[] args) {
+		
+		BasicConfigurator.configure();
 
 		try{
 			final ServiceLoader<IServiceLoader> loader = ServiceLoader.load(IServiceLoader.class);
@@ -43,6 +48,15 @@ public class ServerLaunch {
 			logger.error("Boot failure!!!!!!", e);
 			System.exit(1);
 		}
+		
+		synchronized (ServerLaunch.class) {
+            while (running) {
+                try {
+                	ServerLaunch.class.wait();
+                } catch (Throwable e) {
+                }
+            }
+        }
 		
 	}
 }
